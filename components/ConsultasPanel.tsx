@@ -34,22 +34,44 @@ export function ConsultasPanel({ disciplinas, professores }: ConsultasPanelProps
     if (!disciplinaCodigo) {
       return;
     }
+
     setLoading(true);
-    const response = await fetch(`/api/consultas/professores-por-disciplina/${encodeURIComponent(disciplinaCodigo)}`);
-    const data = await response.json();
-    setProfessoresPorDisciplina(data.professores || []);
-    setLoading(false);
+    try {
+      const response = await fetch(`/api/consultas/professores-por-disciplina/${encodeURIComponent(disciplinaCodigo)}`);
+      if (!response.ok) {
+        setProfessoresPorDisciplina([]);
+        return;
+      }
+
+      const data = await response.json();
+      setProfessoresPorDisciplina(data.professores || []);
+    } catch {
+      setProfessoresPorDisciplina([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const buscarDisciplinasPorProfessor = async () => {
     if (!professorMatricula) {
       return;
     }
+
     setLoading(true);
-    const response = await fetch(`/api/consultas/disciplinas-por-professor/${encodeURIComponent(professorMatricula)}`);
-    const data = await response.json();
-    setDisciplinasPorProfessor(data.disciplinas || []);
-    setLoading(false);
+    try {
+      const response = await fetch(`/api/consultas/disciplinas-por-professor/${encodeURIComponent(professorMatricula)}`);
+      if (!response.ok) {
+        setDisciplinasPorProfessor([]);
+        return;
+      }
+
+      const data = await response.json();
+      setDisciplinasPorProfessor(data.disciplinas || []);
+    } catch {
+      setDisciplinasPorProfessor([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
