@@ -6,6 +6,20 @@ A web system for managing a university department, including professors, discipl
 
 The application provides a centralized workflow for administrative staff to maintain academic department records and review related information without relying on separate tools.
 
+## Preview
+
+![Main interface](images/image.png)
+
+![Professors management](images/image%20(1).png)
+
+![Disciplines management](images/image%20(2).png)
+
+![Classes management](images/image%20(3).png)
+
+![Queries panel](images/image%20(4).png)
+
+![Additional interface view](images/image%20(5).png)
+
 ## Features
 
 - Manage professors
